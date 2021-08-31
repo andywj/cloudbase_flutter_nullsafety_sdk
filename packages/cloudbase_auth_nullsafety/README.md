@@ -1,4 +1,4 @@
-## Cloudbase Auth for Flutter
+## Cloudbase Auth Nullsafety for Flutter
 
 [![Pub](https://img.shields.io/pub/v/cloudbase_auth_nullsafety)]()
 
