@@ -2,7 +2,7 @@
 
 [![Pub](https://img.shields.io/pub/v/cloudbase_auth_nullsafety)]()
 
-[腾讯云·云开发](https://www.cloudbase.net/)的 民间改制Flutter空安全 插件，更多的云开发 Flutter 插件请见[云开发文档](https://docs.cloudbase.net/api-reference/flutter/install.html)。
+[腾讯云·云开发](https://www.cloudbase.net/)的 Flutter空安全(民间改制) 插件，更多的云开发 Flutter 插件请见[云开发文档](https://docs.cloudbase.net/api-reference/flutter/install.html)。
 
 ## 安装
 
@@ -10,8 +10,8 @@
 
 ```yaml
 dependencies:
-  cloudbase_core: ^0.0.1
-  cloudbase_auth: ^0.0.1
+  cloudbase_core_nullsafety: ^0.0.1
+  cloudbase_auth_nullsafety: ^0.0.1
 ```
 
 ## 简单示例
