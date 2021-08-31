@@ -10,8 +10,8 @@
 
 ```yaml
 dependencies:
-  cloudbase_core: ^0.0.1
-  cloudbase_function: ^0.0.1
+  cloudbase_core_nullsafety: ^0.0.1
+  cloudbase_function_nullsafety: ^0.0.1
 ```
 
 ## 简单示例
