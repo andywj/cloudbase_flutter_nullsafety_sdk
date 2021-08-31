@@ -1,0 +1,9 @@
+name: cloudbase_nullsafety
+
+packages:
+  - packages/**
+
+scripts:
+  analyze: melos exec -- pub global run tuneup check
+  postbootstrap: tuneup --version || pub global activate tuneup
+  postclean: melos exec -- rm -rf ./build ./android/.gradle ./ios/.symlinks ./ios/Pods ./android/.idea ./.idea
