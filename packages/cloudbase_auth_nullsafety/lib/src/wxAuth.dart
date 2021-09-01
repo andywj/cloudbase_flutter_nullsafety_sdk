@@ -10,13 +10,7 @@ class WxAuthProvider extends AuthProvider {
   WxAuthProvider(CloudBaseCore core) : super(core);
 
   Future<CloudBaseAuthState> signInByWx(
-      {String? wxAppId, String? wxUniLink}) async {
-    if (wxAppId == null || wxUniLink == null) {
-      throw CloudBaseException(
-          code: CloudBaseExceptionCode.EMPTY_PARAM,
-          message: "wxAppid or wxUniLink is null");
-    }
-
+      {required String wxAppId, required String wxUniLink}) async {
     String code = await _getWxCode(wxAppId, wxUniLink);
     CloudBaseResponse res = await CloudBaseRequest(super.core).postWithoutAuth(
         'auth.getJwt', {

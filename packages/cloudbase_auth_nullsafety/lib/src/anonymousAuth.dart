@@ -14,7 +14,7 @@ class AnonymousAuthProvider extends AuthProvider {
         .postWithoutAuth('auth.signInAnonymously', {
       'anonymous_uuid': uuid,
       'refresh_token': refreshToken,
-      'currLoginType': loginType?.index
+      'currLoginType': loginType.index
     });
 
     // if (res == null) {

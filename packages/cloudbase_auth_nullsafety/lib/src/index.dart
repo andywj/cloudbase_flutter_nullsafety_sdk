@@ -31,7 +31,7 @@ class CloudBaseAuth extends AuthProvider {
 
   /// 微信登录
   Future<CloudBaseAuthState> signInByWx(
-      {String? wxAppId, String? wxUniLink}) async {
+      {required String wxAppId, required String wxUniLink}) async {
     if (_wxAuthProvider == null) {
       _wxAuthProvider = WxAuthProvider(super.core);
     }
