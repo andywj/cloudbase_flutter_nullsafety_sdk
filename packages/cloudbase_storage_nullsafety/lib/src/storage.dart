@@ -10,7 +10,7 @@ class CloudBaseStorage {
   }
 
   /// 上传文件
-  uploadFile(
+  Future<CloudBaseStorageRes<UploadRes>> uploadFile(
       {required String cloudPath,
       required String filePath,
       void onProcess(int count, int total)?}) async {
@@ -61,7 +61,8 @@ class CloudBaseStorage {
   }
 
   /// 删除文件
-  deleteFiles(List<String> fileIdList) async {
+  Future<CloudBaseStorageRes<List<DeleteMetadata>>> deleteFiles(
+      List<String> fileIdList) async {
     if (fileIdList.isEmpty) {
       throw new CloudBaseException(
           code: CloudBaseExceptionCode.INVALID_PARAM,
@@ -95,7 +96,8 @@ class CloudBaseStorage {
   }
 
   /// 获取文件下载链接
-  getFileDownloadURL(List<String> fileIdList) async {
+  Future<CloudBaseStorageRes<List<DownloadMetadata>>> getFileDownloadURL(
+      List<String> fileIdList) async {
     if (fileIdList.isEmpty) {
       throw new CloudBaseException(
           code: CloudBaseExceptionCode.INVALID_PARAM,
@@ -131,7 +133,8 @@ class CloudBaseStorage {
   }
 
   /// 获取上传文件自定义属性
-  getUploadMetadata(String cloudPath) async {
+  Future<CloudBaseStorageRes<UploadMetadata>> getUploadMetadata(
+      String cloudPath) async {
     _checkParams(cloudPath, 'cloudPath is required');
 
     String action = 'storage.getUploadMetadata';

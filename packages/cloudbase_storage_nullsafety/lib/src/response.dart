@@ -12,7 +12,8 @@ class CloudBaseStorageRes<T> {
 
   @override
   String toString() {
-    return jsonEncode({'requestId': this.requestId, 'data': data});
+    return jsonEncode(
+        {'requestId': this.requestId, 'data': jsonDecode(data.toString())});
   }
 }
 
@@ -27,6 +28,11 @@ class UploadRes {
   /// UploadRes.fromMap({...})
   UploadRes.fromMap(Map<String, dynamic> map) {
     this.fileId = map['fileId'];
+  }
+
+  @override
+  String toString() {
+    return jsonEncode({'fileId': fileId});
   }
 }
 
