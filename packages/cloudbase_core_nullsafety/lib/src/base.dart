@@ -1,5 +1,5 @@
-import './exception.dart';
 import './auth.dart';
+import './exception.dart';
 
 class CloudBaseConfig {
   /// 请求超时时间
@@ -54,17 +54,17 @@ class CloudBaseResponse {
   dynamic data;
   String? code;
   String? message;
-  late String requestId;
+  String? requestId;
 
-  CloudBaseResponse(
-      {required this.code, this.message, this.data, required this.requestId});
+  CloudBaseResponse({this.code, this.message, this.data, this.requestId});
 
   factory CloudBaseResponse.fromMap(Map<String, dynamic> map) {
     return CloudBaseResponse(
-        code: map['code'],
-        data: map['data'],
-        message: map['message'],
-        requestId: map['requestId']);
+      code: map['code'],
+      data: map['data'],
+      message: map['message'],
+      requestId: map['requestId'],
+    );
   }
 
   @override

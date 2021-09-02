@@ -92,13 +92,13 @@ class DbCreateResponse {
   String? code;
   String? message;
 
-  late String requestId;
+  String? requestId;
   String? id;
 
   DbCreateResponse({
     this.code,
     this.message,
-    required this.requestId,
+    this.requestId,
     this.id,
   });
 

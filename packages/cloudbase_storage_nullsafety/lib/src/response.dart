@@ -2,7 +2,7 @@ import 'dart:convert';
 
 class CloudBaseStorageRes<T> {
   /// requestId
-  String requestId;
+  String? requestId;
 
   /// data
   T data;

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cloudbase_auth_nullsafety/src/baseAuth.dart';
 import 'package:cloudbase_auth_nullsafety/src/interface.dart';
 import 'package:cloudbase_core_nullsafety/cloudbase_core_nullsafety.dart';
@@ -7,14 +9,15 @@ class AnonymousAuthProvider extends AuthProvider {
 
   Future<CloudBaseAuthState> signInAnonymously() async {
     /// 如果本地存有uuid则匿名登录时传给server
-    String uuid = await cache.getStore(cache.anonymousUuidKey);
-    String refreshToken = await cache.getStore(cache.refreshTokenKey);
-    CloudBaseAuthType loginType = await cache.getStore(cache.loginTypeKey);
+    String? uuid = await cache.getStore(cache.anonymousUuidKey);
+    String? refreshToken = await cache.getStore(cache.refreshTokenKey);
+    CloudBaseAuthType? loginType = await cache.getStore(cache.loginTypeKey);
+    log("loginType: $loginType", name: 'AnonymousAuthProvider');
     CloudBaseResponse res = await CloudBaseRequest(super.core)
         .postWithoutAuth('auth.signInAnonymously', {
       'anonymous_uuid': uuid,
       'refresh_token': refreshToken,
-      'currLoginType': loginType.index
+      'currLoginType': loginType?.index
     });
 
     // if (res == null) {

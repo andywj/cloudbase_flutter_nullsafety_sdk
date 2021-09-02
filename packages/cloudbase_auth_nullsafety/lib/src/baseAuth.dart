@@ -57,7 +57,7 @@ class AuthProvider implements ICloudBaseAuth {
     await cache.removeStore(cache.accessTokenKey);
     await cache.removeStore(cache.accessTokenExpireKey);
     String? refreshToken = await cache.getStore(cache.refreshTokenKey);
-    if (refreshToken == null || refreshToken.isEmpty) {
+    if (refreshToken?.isEmpty ?? true) {
       throw CloudBaseException(
           code: CloudBaseExceptionCode.NOT_LOGIN, message: '未登录CLoudBase');
     }
@@ -65,11 +65,11 @@ class AuthProvider implements ICloudBaseAuth {
     Map<String, dynamic> params = {'refresh_token': refreshToken};
 
     /// 匿名登录时传入uuid，若refresh token过期则可根据此uuid进行延期
-    CloudBaseAuthType authType = await cache.getStore(cache.loginTypeKey);
+    CloudBaseAuthType? authType = await cache.getStore(cache.loginTypeKey);
     if (authType == CloudBaseAuthType.ANONYMOUS) {
       params['anonymous_uuid'] = await cache.getStore(cache.anonymousUuidKey);
     }
-    CloudBaseResponse res = await CloudBaseRequest(this.core)
+    CloudBaseResponse? res = await CloudBaseRequest(this.core)
         .postWithoutAuth('auth.getJwt', params);
 
     // if (res == null) {
@@ -113,8 +113,8 @@ class AuthProvider implements ICloudBaseAuth {
       await AuthProvider._refreshAccessTokenFuture;
     }
 
-    String accessToken = await cache.getStore(cache.accessTokenKey);
-    int accessTokenExpired = await cache.getStore(cache.accessTokenExpireKey);
+    String? accessToken = await cache.getStore(cache.accessTokenKey);
+    int? accessTokenExpired = await cache.getStore(cache.accessTokenExpireKey);
 
     if (accessToken != null &&
         accessTokenExpired != null &&
