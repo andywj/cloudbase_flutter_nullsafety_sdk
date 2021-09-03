@@ -1,6 +1,6 @@
 name: cloudbase_function_nullsafety
 description: Modify the tencent_cloudbase_function, to support null safety.
-version: 0.0.1
+version: 0.0.2
 homepage: https://github.com/andywj/cloudbase_flutter_nullsafety_sdk
 
 environment:
@@ -10,7 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  cloudbase_core_nullsafety: ^0.0.1
+ cloudbase_core_nullsafety: ^0.0.2
 
 dev_dependencies:
   flutter_test:
