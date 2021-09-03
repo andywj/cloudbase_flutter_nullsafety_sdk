@@ -1,6 +1,6 @@
 name: cloudbase_core_nullsafety
 description: Modify the tencent_cloudbase_core, to support null safety.
-version: 0.0.1
+version: 0.0.2
 homepage: https://github.com/andywj/cloudbase_flutter_nullsafety_sdk
 
 environment:
