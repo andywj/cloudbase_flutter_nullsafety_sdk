@@ -10,7 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
- cloudbase_core_nullsafety: ^0.0.2
+  cloudbase_core_nullsafety: ^0.0.2
 
 dev_dependencies:
   flutter_test:
