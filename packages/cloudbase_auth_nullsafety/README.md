@@ -2,13 +2,13 @@
 
 [![Pub](https://img.shields.io/pub/v/cloudbase_auth_nullsafety)]()
 
-| :warning:特别注意（warning）                   |
+| :warning: 特别注意（warning）                  |
 | :--------------------------------------------- |
 | 目前所有空安全版本均为测试版本，请勿在生产使用 |
 
 [腾讯云·云开发](https://www.cloudbase.net/)的 Flutter空安全(民间改制) 插件，更多的云开发 Flutter 插件请见[云开发文档](https://docs.cloudbase.net/api-reference/flutter/install.html)。
 
-### `iOS可能遇到的错误`
+### :broken_heart: iOS可能遇到的错误
 
 * Include of non-modular header inside framework module
   * fix: `Targets` -> `Build Settings` -> Search `Allow No` -> Setting `Allow Non-modular Includes In Framework Modules: Yes`
