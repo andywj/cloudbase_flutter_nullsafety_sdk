@@ -21,7 +21,7 @@
 ```yaml
 dependencies:
   cloudbase_core_nullsafety: ^0.0.2
-  cloudbase_auth_nullsafety: ^0.0.2
+  cloudbase_auth_nullsafety: ^0.0.3
 ```
 
 ## 简单示例
