@@ -50,7 +50,6 @@ class CloudBaseAuth extends AuthProvider {
 
     CloudBaseAuthState authState =
         await _customAuthProvider!.signInWithTicket(ticket);
-
     return authState;
   }
 
@@ -145,5 +144,36 @@ class CloudBaseAuth extends AuthProvider {
     }
 
     return CloudBaseUserInfo(res.data);
+  }
+
+  /// 绑定自定义登录
+  ///
+  /// 需传入[ticket]自定义凭证
+  ///
+  Future<dynamic> linkWithTicket({required String ticket}) async {
+    CloudBaseResponse res = await CloudBaseRequest(core)
+        .post('auth.linkWithTicket', {"ticket": ticket});
+    print(res);
+    if (res.code != null) {
+      throw CloudBaseException(code: res.code!, message: res.message);
+    }
+    return res.data;
+  }
+
+  /// 绑定微信
+  ///
+  /// [wxAppId] 微信AppID
+  ///
+  /// [wxUniLink] 微信ulink链接配置，iOS必传
+  Future<dynamic> linkWithWeChat({
+    required String wxAppId,
+    String wxUniLink = "",
+    bool? withUnionId = false,
+  }) async {
+    if (_wxAuthProvider == null) {
+      _wxAuthProvider = WxAuthProvider(super.core);
+    }
+    return _wxAuthProvider!
+        .linkWithWechat(wxAppId: wxAppId, wxUniLink: wxUniLink);
   }
 }

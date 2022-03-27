@@ -71,4 +71,24 @@ class WxAuthProvider extends AuthProvider {
 
     return code;
   }
+
+  Future<dynamic> linkWithWechat(
+      {required String wxAppId,
+      required String wxUniLink,
+      bool? withUnionId = false}) async {
+    final code = await _getWxCode(wxAppId, wxUniLink);
+    final res = await CloudBaseRequest(core).post('auth.linkWithWeixinCode', {
+      'payload': {
+        'appid': wxAppId,
+        'loginType': 'WECHAT-OPEN',
+        'code': code,
+        'hybridMiniapp': 0,
+        'withUnionId': withUnionId
+      }
+    });
+    if (res.code != null) {
+      throw CloudBaseException(code: res.code!, message: res.message);
+    }
+    return res.data;
+  }
 }

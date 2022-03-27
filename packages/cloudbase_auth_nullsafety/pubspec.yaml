@@ -1,6 +1,6 @@
 name: cloudbase_auth_nullsafety
 description: Modify the tencent_cloudbase_auth, to support null safety.
-version: 0.0.2
+version: 0.0.3
 homepage: https://github.com/andywj/cloudbase_flutter_nullsafety_sdk
 
 environment:

@@ -12,8 +12,8 @@ class CustomAuthProvider extends AuthProvider {
           message: 'signIn ticket is null');
     }
 
-    String refreshTokenKey = cache.refreshTokenKey;
-    String refreshToken = await cache.getStore(refreshTokenKey);
+    String? refreshTokenKey = cache.refreshTokenKey;
+    String? refreshToken = await cache.getStore(refreshTokenKey);
     CloudBaseResponse res = await CloudBaseRequest(super.core).postWithoutAuth(
         'auth.signInWithTicket',
         {'ticket': ticket, 'refresh_token': refreshToken});

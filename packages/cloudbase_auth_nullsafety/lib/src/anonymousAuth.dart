@@ -12,7 +12,6 @@ class AnonymousAuthProvider extends AuthProvider {
     String? uuid = await cache.getStore(cache.anonymousUuidKey);
     String? refreshToken = await cache.getStore(cache.refreshTokenKey);
     CloudBaseAuthType? loginType = await cache.getStore(cache.loginTypeKey);
-    log("loginType: $loginType", name: 'AnonymousAuthProvider');
     CloudBaseResponse res = await CloudBaseRequest(super.core)
         .postWithoutAuth('auth.signInAnonymously', {
       'anonymous_uuid': uuid,
