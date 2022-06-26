@@ -9,7 +9,10 @@ enum CloudBaseAuthType {
   CUSTOM,
 
   /// 匿名登录
-  ANONYMOUS
+  ANONYMOUS,
+
+  /// 手机号
+  PHONE
 }
 
 abstract class ICloudBaseAuth {

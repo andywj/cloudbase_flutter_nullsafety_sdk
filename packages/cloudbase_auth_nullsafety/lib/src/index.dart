@@ -2,13 +2,16 @@ import 'package:cloudbase_auth_nullsafety/src/anonymousAuth.dart';
 import 'package:cloudbase_auth_nullsafety/src/baseAuth.dart';
 import 'package:cloudbase_auth_nullsafety/src/customAuth.dart';
 import 'package:cloudbase_auth_nullsafety/src/interface.dart';
+import 'package:cloudbase_auth_nullsafety/src/phoneAuth.dart';
 import 'package:cloudbase_auth_nullsafety/src/wxAuth.dart';
 import 'package:cloudbase_core_nullsafety/cloudbase_core_nullsafety.dart';
+import 'package:flutter/material.dart';
 
 class CloudBaseAuth extends AuthProvider {
   WxAuthProvider? _wxAuthProvider;
   CustomAuthProvider? _customAuthProvider;
   AnonymousAuthProvider? _anonymousAuthProvider;
+  PhoneAuthProvider? _phoneAuthProvider;
 
   CloudBaseAuth._internal(CloudBaseCore core) : super(core) {
     super.core.setAuthInstance(this);
@@ -43,7 +46,7 @@ class CloudBaseAuth extends AuthProvider {
   }
 
   /// 自定义登录
-  Future<CloudBaseAuthState> signInWithTicket(String ticket) async {
+  Future<CloudBaseAuthState> signInWithTicket({required String ticket}) async {
     if (_customAuthProvider == null) {
       _customAuthProvider = CustomAuthProvider(super.core);
     }
@@ -175,5 +178,60 @@ class CloudBaseAuth extends AuthProvider {
     }
     return _wxAuthProvider!
         .linkWithWechat(wxAppId: wxAppId, wxUniLink: wxUniLink);
+  }
+
+  Future<bool> sendPhoneCode({required String phone}) async {
+    final res = await CloudBaseRequest(core).postWithoutAuth(
+      'auth.sendPhoneCode',
+      {
+        'phoneNumber': "+86$phone",
+      },
+    );
+    return res.data["data"]["SendStatus"] == 'Ok';
+  }
+
+  Future<dynamic> signInWithPhone({
+    required String phone,
+    String? code,
+    String? passwd,
+  }) async {
+    if (_phoneAuthProvider == null) {
+      _phoneAuthProvider = PhoneAuthProvider(this.core);
+    }
+    return _phoneAuthProvider!.signIn(
+      phone: phone,
+      code: code,
+      password: passwd,
+    );
+  }
+
+  Future<dynamic> signUpWithPhone({
+    required String phone,
+    String? code,
+    String? passwd,
+  }) async {
+    if (_phoneAuthProvider == null) {
+      _phoneAuthProvider = PhoneAuthProvider(this.core);
+    }
+    return _phoneAuthProvider!.signUp(
+      phone: phone,
+      code: code,
+      password: passwd,
+    );
+  }
+
+  Future<dynamic> forceResetPwd({
+    required String phone,
+    String? code,
+    String? passwd,
+  }) async {
+    if (_phoneAuthProvider == null) {
+      _phoneAuthProvider = PhoneAuthProvider(this.core);
+    }
+    return _phoneAuthProvider!.forceResetPwd(
+      phone: phone,
+      code: code,
+      password: passwd,
+    );
   }
 }

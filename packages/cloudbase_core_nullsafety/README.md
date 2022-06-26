@@ -6,7 +6,7 @@
 | :--------------------------------------------- |
 | 目前所有空安全版本均为测试版本，请勿在生产使用 |
 
-[腾讯云·云开发](https://www.cloudbase.net/)的 Flutter空安全(民间改制) 插件，更多的云开发 Flutter 插件请见[云开发文档](https://docs.cloudbase.net/api-reference/flutter/install.html)。
+[腾讯云·云开发](https://www.cloudbase.net/)的 Flutter空安全(自用修改版) 插件，更多的云开发 Flutter 插件请见[云开发文档](https://docs.cloudbase.net/api-reference/flutter/install.html)。
 
 ## 安装
 
@@ -14,7 +14,7 @@
 
 ```yaml
 dependencies:
-  cloudbase_core_nullsafety: ^0.0.2
+  cloudbase_core_nullsafety: ^0.0.3
 ```
 
 ## 简单示例

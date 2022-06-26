@@ -20,8 +20,8 @@
 
 ```yaml
 dependencies:
-  cloudbase_core_nullsafety: ^0.0.2
-  cloudbase_auth_nullsafety: ^0.0.3
+  cloudbase_core_nullsafety: ^0.0.3
+  cloudbase_auth_nullsafety: ^0.0.4
 ```
 
 ## 简单示例
@@ -52,6 +52,32 @@ if (authState == null) {
     print(err);
   });
 }
+
+// 微信登录
+auth.signInByWx(wxAppId:'Your wxAppId', wxUniLink:'Your wxUniLink');
+
+// 绑定微信
+auth.linkWithWeChat(wxAppId:'Your wxAppId', wxUniLink:'Your wxUniLink',withUnionId: false);
+
+// 自定义登录
+auth.signInWithTicket(ticket: 'Your custom login ticket');
+
+// 绑定自定义登录
+auth.linkWithTicket(ticket: 'Your custom login ticket');
+
+// 发送短信验证码
+auth.sendPhoneCode(phone: 'Your phone number');
+
+// 短信登录
+auth.signInWithPhone(phone: 'Your phone number', code: 'Your sms code');
+
+// 短信注册
+auth.signUpWithPhone(phone: 'Your phone number', code: 'Your sms code');
+
+// 强制重置密码
+auth.forceResetPwd(phone: 'Your phone number', code: 'Your sms code', passwd: 'Your password');
+
+
 ```
 
 ## 详细文档

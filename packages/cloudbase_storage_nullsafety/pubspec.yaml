@@ -10,11 +10,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  cloudbase_core_nullsafety: ^0.0.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  cloudbase_core_nullsafety:
+    path: ../cloudbase_core_nullsafety
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
